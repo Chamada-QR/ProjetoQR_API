@@ -1,0 +1,27 @@
+{
+  "name": "scanner-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GabrielEduardoBrambilla/Scanner-API.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GabrielEduardoBrambilla/Scanner-API/issues"
+  },
+  "homepage": "https://github.com/GabrielEduardoBrambilla/Scanner-API#readme",
+  "dependencies": {
+    "express": "^4.18.3",
+    "helmet": "^7.1.0",
+    "mariadb": "^3.3.0",
+    "nodemon": "^3.1.0",
+    "sequelize": "^6.37.2"
+  }
+}
