@@ -9,8 +9,11 @@ const Lesson = sequelize.define('lesson', {
     primaryKey: true,
   },
   qr_code: Sequelize.STRING,
-  status: Sequelize.STRING,
-  data: Sequelize.DATE,
+  status: Sequelize.BOOLEAN,
+  date: Sequelize.DATE,
 }) 
 
+Lesson.associate = (models) => {
+  Lesson.belongsToMany(models.User, {through: 'presences'})
+}
 module.exports = Lesson;
