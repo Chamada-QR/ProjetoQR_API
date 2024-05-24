@@ -23,7 +23,13 @@ exports.getQr = async (req, res, next) => {
   });
 
   if (!lesson) {
-    return res.status(400).json({ error: `Not found lesson active by date: ${date}.` });
+    return res.status(404).json({ error: `Not found lesson active by date: ${date}.` });
+  }
+
+  let now =  new Date();
+  if(lesson.updatedAt < now.setMinutes(now.getMinutes() + 5)) {
+    lesson.qr_code = 'bbb';
+    await lesson.save();
   }
 
   return res.json(lesson);

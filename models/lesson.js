@@ -10,7 +10,7 @@ const Lesson = sequelize.define('lesson', {
   },
   qr_code: Sequelize.STRING,
   status: Sequelize.BOOLEAN,
-  date: Sequelize.DATE,
+  date: Sequelize.DATEONLY,
 }) 
 
 Lesson.associate = (models) => {
