@@ -7,6 +7,7 @@ const router = express.Router();
 router.post("", lessonController.addLesson);
 
 
-router.get("/:date", lessonController.getQr);
+router.get("/:id", lessonController.getQr);
+router.post("/:id/:qrcode", lessonController.registerPresence);
 
 module.exports = router;
