@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize');
 
 const sequelize = require('../database/index');
+const Presence = require('./presence');
+const User = require('./user');
 
 const Lesson = sequelize.define('lesson', {
   id: {
@@ -13,7 +15,7 @@ const Lesson = sequelize.define('lesson', {
   date: Sequelize.DATEONLY,
 }) 
 
-Lesson.associate = (models) => {
-  Lesson.belongsToMany(models.User, {through: 'presences'})
-}
+Lesson.belongsToMany(User, {through: Presence})
+User.belongsToMany(Lesson, {through: Presence})
+
 module.exports = Lesson;

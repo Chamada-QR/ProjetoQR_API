@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 
 const sequelize = require('../database/index');
+const Role = require('./role');
 
 const User = sequelize.define('user', {
   id: {
@@ -13,9 +14,6 @@ const User = sequelize.define('user', {
   roleId: Sequelize.INTEGER,
 }) 
 
-User.associate = (models) => {
-  User.belongsTo(models.Role, {foreignKey: 'roleId', as: 'role'})
-  User.belongsToMany(models.Lesson, {through: 'presences'})
-}
+User.belongsTo(Role, {foreignKey: 'roleId', as: 'role'})
 
 module.exports = User;

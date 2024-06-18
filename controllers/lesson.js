@@ -19,7 +19,7 @@ exports.getQr = async (req, res, next) => {
   const lesson = await Lesson.findByPk(id);
 
   if (!lesson) {
-    return res.status(404).json({ error: `Not found lesson active by date: ${date}.` });
+    return res.status(404).json({ error: `Not found lesson active by id: ${id}.` });
   }
 
   let now = new Date();
@@ -35,21 +35,12 @@ exports.getQr = async (req, res, next) => {
 }
 
 exports.registerPresence = async (req, res, next) => {
-  const { date, qrcode } = req.params;
+  const { id, qrcode } = req.params;
   const { user_id } = req.body;
 
-  const lesson = await Lesson.findOne({
-    where: { 
-      date,
-      qrcode,
-      status:1
-    } 
-  });
-
-  const createdPresence = await lesson.createPresence({
-    user_id
-  });
-
+  const lesson = await Lesson.findByPk(id); 
+  const user = await Lesson.findByPk(user_id); 
+  await lesson.addUser(user)
   return res.json(createdPresence)
 }
 
