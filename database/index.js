@@ -1,8 +1,8 @@
-const { Sequelize } = require('sequelize');
+const { Sequelize } = require('sequelize')
 
-const sequelize = new Sequelize('projetoqr', 'root', 'teste123456', {
+const sequelize = new Sequelize('projetoqr', 'Nersonson', '', {
   host: 'localhost',
-  dialect: 'mariadb',
-});
+  dialect: 'mariadb'
+})
 
-module.exports = sequelize;
+module.exports = sequelize
