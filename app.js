@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 const port = 3758
+const userRouter = require('./routes/user')
 const lessonRouter = require('./routes/lesson')
 var helmet = require('helmet')
 app.use(helmet())
@@ -16,6 +17,12 @@ app.use(
     origin: 'http://localhost:3000' // Allow requests from this origin
   })
 )
+app.use('/lesson', lessonRouter)
+app.use('/users', userRouter)
+
+app.use((req, res, next) => {
+  res.status(404).send('Not Found')
+})
 ;(async () => {
   await sequelize
     .sync({ alter: true })
@@ -25,11 +32,6 @@ app.use(
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
-})
-app.use('/lesson', lessonRouter)
-
-app.use((req, res, next) => {
-  res.status(404).send('Not Found')
 })
 
 app.listen(port, () => {
