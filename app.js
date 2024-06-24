@@ -11,12 +11,20 @@ const sequelize = require('./database')
 const Lesson = require('./models/lesson')
 const User = require('./models/user')
 const Role = require('./models/role')
+
 // Use the CORS middleware
 app.use(
   cors({
     origin: 'http://localhost:3000' // Allow requests from this origin
   })
 )
+app.use('/lesson', lessonRouter)
+app.use('/users', userRouter)
+
+app.use((req, res, next) => {
+  res.status(404).send('Not Found')
+})
+
 ;(async () => {
   await sequelize
     .sync({ alter: true })
@@ -24,15 +32,6 @@ app.use(
     .catch(err => console.log(err))
 })()
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-app.use('/lesson', lessonRouter)
-app.use('/user', userRouter)
-
-app.use((req, res, next) => {
-  res.status(404).send('Not Found')
-})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
