@@ -71,7 +71,7 @@ exports.registerPresence = async (req, res, next) => {
 //     }
 //     res.render('admin/edit-lesson', {
 //       pageTitle: 'Edit Lesson',
-//       path: '/admin/edit-lesson',
+//       path: '/admin/edit-lesson',in
 //       editing: editMode,
 //       lesson: lesson
 //     });
