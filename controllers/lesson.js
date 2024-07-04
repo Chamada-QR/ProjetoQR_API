@@ -57,6 +57,7 @@ exports.registerPresence = async (req, res, next) => {
 
     return res.json(lessonStudents)
   } else {
-    return res.status(404).json({ error: 'Student or Lesson not found' });
+    return res.status(404).json({ error: 'Student or Lesson not found' })
   }
+  ;('')
 }

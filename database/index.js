@@ -1,8 +1,9 @@
 const { Sequelize } = require('sequelize')
 
-const sequelize = new Sequelize('projetoqr', 'root', 'teste123456', {
+const sequelize = new Sequelize('projetoqr', 'root', '', {
   host: 'localhost',
-  dialect: 'mariadb'
+  dialect: 'mariadb',
+  logging: false
 })
 
 module.exports = sequelize

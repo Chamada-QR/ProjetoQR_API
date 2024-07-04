@@ -24,14 +24,9 @@ app.use('/users', userRouter)
 app.use((req, res, next) => {
   res.status(404).send('Not Found')
 })
-
 ;(async () => {
-  await sequelize
-    .sync({ alter: true })
-    // .then(result => console.log(result))
-    .catch(err => console.log(err))
+  await sequelize.sync({ alter: true }).catch(err => console.log(err))
 })()
-
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
